@@ -19,9 +19,9 @@ namespace Ui_WinForm.Forms
 
 	public partial class frmMain : Form
 	{
-		private readonly IGetContactList _contactList;
+		private readonly IGetContactListService _contactList;
 
-		public frmMain(IGetContactList contactList)
+		public frmMain(IGetContactListService contactList)
 		{
 			_contactList = contactList;
 			InitializeComponent();
@@ -41,7 +41,8 @@ namespace Ui_WinForm.Forms
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			this.Cursor = Cursors.WaitCursor;
-
+			var contactLists = _contactList.GetContactLists(txtSearchKey.Text);
+			GridSetting(contactLists);
 			this.Cursor = Cursors.Default;
 		}
 

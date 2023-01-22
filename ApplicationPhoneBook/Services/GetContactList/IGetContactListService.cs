@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationPhoneBook.Services.GetContactList
 {
-	public interface IGetContactList
+	public interface IGetContactListService
 	{
-		List<ContactListDto> GetContactLists();
+		List<ContactListDto> GetContactLists(string SearchKey = null);
 
 	}
 }

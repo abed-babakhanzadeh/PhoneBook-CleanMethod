@@ -23,7 +23,7 @@
 
 			services.AddScoped<IDataBaseContext, DataBaseContext>();
 			services.AddScoped<IAddNewContactService, AddNewContactService>();
-			services.AddScoped<IGetContactList, GetContactList>();
+			services.AddScoped<IGetContactListService, GetContactListService>();
 
 			services.AddDbContext<DataBaseContext>();
 
@@ -41,7 +41,7 @@
 			// see https://aka.ms/applicationconfiguration.
 			ConfigureServices();
 			ApplicationConfiguration.Initialize();
-			var contacts = (IGetContactList)ServiceProvider.GetService(typeof(IGetContactList))!;
+			var contacts = (IGetContactListService)ServiceProvider.GetService(typeof(IGetContactListService))!;
 			Application.Run(new frmMain(contacts));
 		}
 	}
