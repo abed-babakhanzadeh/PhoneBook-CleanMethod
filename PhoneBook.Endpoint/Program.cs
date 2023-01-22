@@ -1,7 +1,8 @@
-namespace PhoneBook.Endpoint
+﻿namespace PhoneBook.Endpoint
 {
 	using ApplicationPhoneBook.DataBase;
 	using ApplicationPhoneBook.Services.AddNewContact;
+	using ApplicationPhoneBook.Services.GetContactList;
 
 	using Microsoft.Extensions.DependencyInjection;
 
@@ -13,11 +14,16 @@ namespace PhoneBook.Endpoint
 	{
 		public static IServiceProvider ServiceProvider { get; private set; }
 
+		/// <summary>
+		/// سرویسها
+		/// </summary>
 		static void ConfigureServices()
 		{
 			var services = new ServiceCollection();
+
 			services.AddScoped<IDataBaseContext, DataBaseContext>();
 			services.AddScoped<IAddNewContactService, AddNewContactService>();
+			services.AddScoped<IGetContactList, GetContactList>();
 
 			services.AddDbContext<DataBaseContext>();
 
@@ -35,7 +41,8 @@ namespace PhoneBook.Endpoint
 			// see https://aka.ms/applicationconfiguration.
 			ConfigureServices();
 			ApplicationConfiguration.Initialize();
-			Application.Run(new frmMain());
+			var contacts = (IGetContactList)ServiceProvider.GetService(typeof(IGetContactList))!;
+			Application.Run(new frmMain(contacts));
 		}
 	}
 }

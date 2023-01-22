@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationPhoneBook.DataBase;
+using DomainPhoneBook.Entities;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace PersistancePhoneBook.Context
 {
-	using ApplicationPhoneBook.DataBase;
 
-	using DomainPhoneBook.Entities;
-
-	using Microsoft.EntityFrameworkCore;
-
-	public class DataBaseContext:DbContext, IDataBaseContext
+	public class DataBaseContext : DbContext, IDataBaseContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

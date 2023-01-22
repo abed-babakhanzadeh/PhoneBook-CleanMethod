@@ -7,12 +7,13 @@ using DomainPhoneBook.Entities;
 
 public class AddNewContactService : IAddNewContactService
 {
-	private readonly IDataBaseContext dataBaseContext;
+	private readonly IDataBaseContext _Context;
 
-	public AddNewContactService(IDataBaseContext dataBaseContext)
+	public AddNewContactService(IDataBaseContext context)
 	{
-		this.dataBaseContext = dataBaseContext;
+		_Context = context;
 	}
+
 	public ResultDto Execute(AddNewContactDto newContact)
 	{
 		if (string.IsNullOrEmpty(newContact.PhoneNumber))
@@ -31,8 +32,8 @@ public class AddNewContactService : IAddNewContactService
 			newContact.PhoneNumber,
 			newContact.Description);
 
-		dataBaseContext.Contacts.Add(contact);
-		dataBaseContext.SaveChanges();
+		_Context.Contacts.Add(contact);
+		_Context.SaveChanges();
 		return new ResultDto()
 			       {
 				       IsSuccess = true,
