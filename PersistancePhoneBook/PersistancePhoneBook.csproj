@@ -15,10 +15,10 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ApplicationPhoneBook\ApplicationPhoneBook.csproj" />
-    <ProjectReference Include="..\DomainPhoneBook\DomainPhoneBook.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ApplicationPhoneBook\ApplicationPhoneBook.csproj" />
+		<ProjectReference Include="..\DomainPhoneBook\DomainPhoneBook.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
