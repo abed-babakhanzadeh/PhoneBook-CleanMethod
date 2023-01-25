@@ -2,6 +2,8 @@
 {
 	using ApplicationPhoneBook.DataBase;
 	using ApplicationPhoneBook.Services.AddNewContact;
+	using ApplicationPhoneBook.Services.DeleteContact;
+	using ApplicationPhoneBook.Services.DetailContact;
 	using ApplicationPhoneBook.Services.GetContactList;
 
 	using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,8 @@
 			services.AddScoped<IDataBaseContext, DataBaseContext>();
 			services.AddScoped<IAddNewContactService, AddNewContactService>();
 			services.AddScoped<IGetContactListService, GetContactListService>();
+			services.AddScoped<IDeleteContact, DeleteContact>();
+			services.AddScoped<IDetailContact, DetailContact>();
 
 			services.AddDbContext<DataBaseContext>();
 
@@ -41,8 +45,10 @@
 			// see https://aka.ms/applicationconfiguration.
 			ConfigureServices();
 			ApplicationConfiguration.Initialize();
+
 			var contacts = (IGetContactListService)ServiceProvider.GetService(typeof(IGetContactListService))!;
-			Application.Run(new frmMain(contacts));
+			var delete = (IDeleteContact)ServiceProvider.GetService(typeof(IDeleteContact))!;
+			Application.Run(new frmMain(contacts, delete));
 		}
 	}
 }

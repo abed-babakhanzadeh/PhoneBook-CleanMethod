@@ -4,8 +4,8 @@ using DomainPhoneBook.Entities;
 
 namespace ApplicationPhoneBook.Services.AddNewContact
 {
-    public class AddNewContactService:IAddNewContactService
-	{
+    public class AddNewContactService : IAddNewContactService
+    {
         private readonly IDataBaseContext _Context;
 
         public AddNewContactService(IDataBaseContext context)

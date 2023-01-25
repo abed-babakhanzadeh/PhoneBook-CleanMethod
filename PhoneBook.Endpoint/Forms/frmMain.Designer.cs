@@ -57,10 +57,11 @@
 			// txtSearchKey
 			// 
 			this.txtSearchKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtSearchKey.Location = new System.Drawing.Point(295, 23);
+			this.txtSearchKey.Location = new System.Drawing.Point(18, 23);
 			this.txtSearchKey.Name = "txtSearchKey";
-			this.txtSearchKey.Size = new System.Drawing.Size(307, 42);
+			this.txtSearchKey.Size = new System.Drawing.Size(584, 42);
 			this.txtSearchKey.TabIndex = 1;
+			this.txtSearchKey.TextChanged += new System.EventHandler(this.txtSearchKey_TextChanged);
 			// 
 			// label1
 			// 
@@ -77,12 +78,13 @@
 			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.BackColor = System.Drawing.Color.LimeGreen;
 			this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnSearch.Location = new System.Drawing.Point(168, 23);
+			this.btnSearch.Location = new System.Drawing.Point(212, 12);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(121, 42);
 			this.btnSearch.TabIndex = 3;
 			this.btnSearch.Text = "بیاب";
 			this.btnSearch.UseVisualStyleBackColor = false;
+			this.btnSearch.Visible = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// btnDelete
