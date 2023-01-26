@@ -1,27 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ApplicationPhoneBook.Services.DetailContact;
+using ApplicationPhoneBook.Services.EditContact;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Ui_WinForm.Forms
 {
 	public partial class frmEditContact : Form
 	{
-		public frmEditContact(int contactId)
+		private readonly int contactId;
+		private readonly IEditContactService editService;
+		private readonly IDetailContact detail;
+
+		public frmEditContact(int contactId, IEditContactService editService, IDetailContact detail)
 		{
 			InitializeComponent();
-
+			this.contactId = contactId;
+			this.editService = editService;
+			this.detail = detail;
 		}
 
 		private void frmEditContact_Load(object sender, EventArgs e)
 		{
-
-
+			var res = detail.Details(contactId);
+			txtCompany.Text = res.Company;
+			txtDescription.Text = res.Description;
+			txtName.Text = res.Name;
+			txtLastName.Text = res.LastName;
+			txtPhoneNumber.Text = res.PhoneNumber;
 		}
 
 		private void btnBack_Click(object sender, EventArgs e)
@@ -31,8 +35,16 @@ namespace Ui_WinForm.Forms
 
 		private void btnEditContact_Click(object sender, EventArgs e)
 		{
-
-
+			EditContactDto contact = new EditContactDto
+			{
+				Company = txtCompany.Text,
+				Description = txtDescription.Text,
+				LastName = txtLastName.Text,
+				Name = txtName.Text,
+				PhoneNumber = txtPhoneNumber.Text,
+			};
+			editService.EditContact(contact, contactId);
+			this.Close();
 		}
 	}
 }

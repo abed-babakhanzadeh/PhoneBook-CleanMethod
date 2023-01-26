@@ -13,6 +13,7 @@ using PhoneBook.Endpoint.Forms;
 using ApplicationPhoneBook.Services.GetContactList;
 using ApplicationPhoneBook.Services.DeleteContact;
 using ApplicationPhoneBook.Services.DetailContact;
+using ApplicationPhoneBook.Services.EditContact;
 
 namespace Ui_WinForm.Forms
 {
@@ -86,7 +87,11 @@ namespace Ui_WinForm.Forms
 
 		private void btnEditContact_Click(object sender, EventArgs e)
 		{
-
+			var id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+			var addService = (IEditContactService)Program.ServiceProvider.GetService(typeof(IEditContactService))!;
+			var addServiceDetail = (IDetailContact)Program.ServiceProvider.GetService(typeof(IDetailContact))!;
+			new frmEditContact(id, addService, addServiceDetail).ShowDialog();
+			frmMain_Load(null!, null!);
 		}
 
 

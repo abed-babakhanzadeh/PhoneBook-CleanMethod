@@ -4,6 +4,7 @@
 	using ApplicationPhoneBook.Services.AddNewContact;
 	using ApplicationPhoneBook.Services.DeleteContact;
 	using ApplicationPhoneBook.Services.DetailContact;
+	using ApplicationPhoneBook.Services.EditContact;
 	using ApplicationPhoneBook.Services.GetContactList;
 
 	using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,7 @@
 			services.AddScoped<IGetContactListService, GetContactListService>();
 			services.AddScoped<IDeleteContact, DeleteContact>();
 			services.AddScoped<IDetailContact, DetailContact>();
+			services.AddScoped<IEditContactService, EditContactService>();
 
 			services.AddDbContext<DataBaseContext>();
 
